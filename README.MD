@@ -6,6 +6,27 @@ This library allows to communicate with [Pocket API](https://getpocket.com/devel
 
 License: BSD.
 
+### Maven
+Add repository to your `pom.xml`:
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+```
+
+Add dependency:
+```xml
+<dependency>
+    <groupId>com.github.tchudyk</groupId>
+    <artifactId>pocket-integration</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+## Usage
 
 ### Authorization
 
