@@ -11,6 +11,7 @@ import pl.codeset.pocket.modify.DeleteAction;
 import pl.codeset.pocket.modify.FavoriteAction;
 import pl.codeset.pocket.modify.ModifyItemCmd;
 import pl.codeset.pocket.modify.ModifyResult;
+import pl.codeset.pocket.modify.TagDeleteAction;
 
 import java.io.IOException;
 
