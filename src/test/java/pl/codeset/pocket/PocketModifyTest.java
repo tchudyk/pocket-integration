@@ -40,6 +40,7 @@ class PocketModifyTest {
                 .action(new ArchiveAction("some-id"))
                 .action(new DeleteAction("other-id"))
                 .action(new FavoriteAction("some-id"))
+                .action(new TagDeleteAction("some-tag"))
                 .build();
 
         // when
@@ -47,7 +48,7 @@ class PocketModifyTest {
 
         // then
         assertThat(result.getActionResults())
-                .containsExactly(true, true, false);
+                .containsExactly(true, true, false, true);
     }
 
 
@@ -59,13 +60,12 @@ class PocketModifyTest {
                 .action(new ArchiveAction("some-id"))
                 .action(new DeleteAction("other-id"))
                 .action(new FavoriteAction("some-id"))
+                .action(new TagDeleteAction("some-tag"))
                 .build();
 
         // when
-        Assertions.assertThrows(PocketException.class, () -> {
-            pocket.modify(cmd);
-        });
+        Assertions.assertThrows(PocketException.class, () -> pocket.modify(cmd));
     }
 
-    private static final String HTTP_RESPONSE_JSON = "{\"action_results\":[true,true,false],\"status\":1}";
+    private static final String HTTP_RESPONSE_JSON = "{\"action_results\":[true,true,false,true],\"status\":1}";
 }
