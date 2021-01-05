@@ -43,6 +43,7 @@ class PocketListTest {
         // then
         assertThat(result.getList().size()).isEqualTo(1);
         assertThat(result.getList().get(0).getItemId()).isEqualTo("229279689");
+        assertThat(result.getList().get(0).getTags().size()).isEqualTo(2);
     }
 
     @Test
@@ -72,6 +73,15 @@ class PocketListTest {
             "\"has_video\":\"1\",\n" +
             "\"has_image\":\"1\",\n" +
             "\"word_count\":\"3197\",\n" +
+            "\"tags\": {\n" +
+            "    \"tag1\": {\n" +
+            "        \"item_id\": \"229279689\",\n" +
+            "        \"tag\": \"tag1\"\n" +
+            "    },\n" +
+            "    \"tag2\": {\n" +
+            "        \"item_id\": \"229279689\",\n" +
+            "        \"tag\": \"tag2\"\n" +
+            "    }},\n" +
             "\"images\":{\"1\":{\"item_id\":\"229279689\",\"image_id\":\"1\",\n" +
             "    \"src\":\"http:\\/\\/a.espncdn.com\\/combiner\\/i?img=\\/photo\\/2012\\/0927\\/grant_g_ryder_cr_640.jpg&w=640&h=360\",\n" +
             "    \"width\":\"0\",\"height\":\"0\",\"credit\":\"Jamie Squire\\/Getty Images\",\"caption\":\"\"}},\n" +

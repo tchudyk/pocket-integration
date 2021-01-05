@@ -34,6 +34,7 @@ public class PocketItem {
     private String topImageUrl;
     private long listenDurationEstimate;
     private DomainMeta domainMetadata;
+    private Map<String, ItemTag> tags;
     private Map<String, Image> images;
     private Map<String, Video> videos;
 
@@ -131,6 +132,12 @@ public class PocketItem {
         return domainMetadata;
     }
 
+    public List<ItemTag> getTags() {
+        return Optional.ofNullable(tags)
+                .map(i -> Collections.unmodifiableList(new ArrayList<>(i.values())))
+                .orElse(Collections.emptyList());
+    }
+
     public List<Image> getImages() {
         return Optional.ofNullable(images)
                 .map(i -> Collections.unmodifiableList(new ArrayList<>(i.values())))
@@ -183,6 +190,7 @@ public class PocketItem {
                 Objects.equals(lang, that.lang) &&
                 Objects.equals(topImageUrl, that.topImageUrl) &&
                 Objects.equals(domainMetadata, that.domainMetadata) &&
+                Objects.equals(tags, that.tags) &&
                 Objects.equals(images, that.images) &&
                 Objects.equals(videos, that.videos);
     }
@@ -191,6 +199,6 @@ public class PocketItem {
     public int hashCode() {
         return Objects.hash(itemId, resolvedId, givenUrl, givenTitle, favorite, status, timeAdded, timeUpdated,
                 timeRead, timeFavorited, resolvedTitle, resolvedUrl, excerpt, isArticle, isIndex, hasVideo, hasImage,
-                wordCount, lang, topImageUrl, listenDurationEstimate, domainMetadata, images, videos);
+                wordCount, lang, topImageUrl, listenDurationEstimate, domainMetadata, tags, images, videos);
     }
 }
