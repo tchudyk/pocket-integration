@@ -5,8 +5,13 @@ import java.util.Objects;
 
 public class ModifyResult {
 
-    private List<Boolean> actionResults;
-    private Integer status;
+    private final List<Boolean> actionResults;
+    private final Integer status;
+
+    public ModifyResult(List<Boolean> actionResults, Integer status) {
+        this.actionResults = actionResults;
+        this.status = status;
+    }
 
     public Integer getStatus() {
         return status;

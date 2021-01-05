@@ -6,8 +6,13 @@ import java.util.Objects;
 
 public class AddItemResult {
 
-    private int status;
-    private PocketItem item;
+    private final int status;
+    private final PocketItem item;
+
+    public AddItemResult(int status, PocketItem item) {
+        this.status = status;
+        this.item = item;
+    }
 
     public int getStatus() {
         return status;

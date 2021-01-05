@@ -1,6 +1,5 @@
 package pl.codeset.pocket;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,6 +12,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
@@ -56,12 +56,10 @@ class PocketAddItemTest {
                 .build();
 
         // when
-        Assertions.assertThrows(PocketException.class, () -> {
-            pocket.addItem(cmd);
-        });
+        assertThrows(PocketException.class, () -> pocket.addItem(cmd));
     }
 
-    private final String HTTP_RESPONSE_JSON = "{\"status\":1,\"item\":{\"item_id\":\"229279689\",\n" +
+    private static final String HTTP_RESPONSE_JSON = "{\"status\":1,\"item\":{\"item_id\":\"229279689\",\n" +
             "\"resolved_id\":\"229279689\",\n" +
             "\"given_url\":\"http:\\/\\/www.grantland.com\\/blog\\/the-triangle\\/post\\/_\\/id\\/38347\\/ryder-cup-preview\",\n" +
             "\"given_title\":\"The Massive Ryder Cup Preview - The Triangle Blog - Grantland\",\n" +

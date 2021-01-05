@@ -12,31 +12,63 @@ import java.util.Optional;
 
 public class PocketItem {
 
-    private String itemId;
-    private String resolvedId;
-    private String givenUrl;
-    private String givenTitle;
-    private short favorite;
-    private short status;
-    private long timeAdded;
-    private long timeUpdated;
-    private long timeRead;
-    private long timeFavorited;
-    private String resolvedTitle;
-    private String resolvedUrl;
-    private String excerpt;
-    private short isArticle;
-    private short isIndex;
-    private short hasVideo;
-    private short hasImage;
-    private int wordCount;
-    private String lang;
-    private String topImageUrl;
-    private long listenDurationEstimate;
-    private DomainMeta domainMetadata;
-    private Map<String, ItemTag> tags;
-    private Map<String, Image> images;
-    private Map<String, Video> videos;
+    private final String itemId;
+    private final String resolvedId;
+    private final String givenUrl;
+    private final String givenTitle;
+    private final short favorite;
+    private final short status;
+    private final long timeAdded;
+    private final long timeUpdated;
+    private final long timeRead;
+    private final long timeFavorited;
+    private final String resolvedTitle;
+    private final String resolvedUrl;
+    private final String excerpt;
+    private final short isArticle;
+    private final short isIndex;
+    private final short hasVideo;
+    private final short hasImage;
+    private final int wordCount;
+    private final String lang;
+    private final String topImageUrl;
+    private final long listenDurationEstimate;
+    private final DomainMeta domainMetadata;
+    private final Map<String, ItemTag> tags;
+    private final Map<String, Image> images;
+    private final Map<String, Video> videos;
+
+    public PocketItem(String itemId, String resolvedId, String givenUrl, String givenTitle, short favorite,
+            short status, long timeAdded, long timeUpdated, long timeRead, long timeFavorited, String resolvedTitle,
+            String resolvedUrl, String excerpt, short isArticle, short isIndex, short hasVideo, short hasImage,
+            int wordCount, String lang, String topImageUrl, long listenDurationEstimate, DomainMeta domainMetadata,
+            Map<String, ItemTag> tags, Map<String, Image> images, Map<String, Video> videos) {
+        this.itemId = itemId;
+        this.resolvedId = resolvedId;
+        this.givenUrl = givenUrl;
+        this.givenTitle = givenTitle;
+        this.favorite = favorite;
+        this.status = status;
+        this.timeAdded = timeAdded;
+        this.timeUpdated = timeUpdated;
+        this.timeRead = timeRead;
+        this.timeFavorited = timeFavorited;
+        this.resolvedTitle = resolvedTitle;
+        this.resolvedUrl = resolvedUrl;
+        this.excerpt = excerpt;
+        this.isArticle = isArticle;
+        this.isIndex = isIndex;
+        this.hasVideo = hasVideo;
+        this.hasImage = hasImage;
+        this.wordCount = wordCount;
+        this.lang = lang;
+        this.topImageUrl = topImageUrl;
+        this.listenDurationEstimate = listenDurationEstimate;
+        this.domainMetadata = domainMetadata;
+        this.tags = tags;
+        this.images = images;
+        this.videos = videos;
+    }
 
     public String getItemId() {
         return itemId;
