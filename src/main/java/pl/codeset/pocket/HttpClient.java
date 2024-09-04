@@ -44,7 +44,7 @@ class HttpClient {
                         }
                     });
 
-            throw new PocketException(headerErrorCode, headerErrorMessage);
+            throw new PocketException(headerErrorCode, headerErrorMessage, statusCode);
         }
     }
 }

@@ -24,10 +24,11 @@ public class GetItemsCmd extends AuthorizedCmd {
     private final Long since;
     private final Integer count;
     private final Integer offset;
+    private final Integer total;
 
     private GetItemsCmd(ItemState state, Short favorite, String tag,
             ContentType contentType, Sort sort, DetailType detailType, String search, String domain,
-            Long since, Integer count, Integer offset) {
+            Long since, Integer count, Integer offset, Integer total) {
         this.state = state;
         this.favorite = favorite;
         this.tag = tag;
@@ -39,6 +40,7 @@ public class GetItemsCmd extends AuthorizedCmd {
         this.since = since;
         this.count = count;
         this.offset = offset;
+        this.total = total;
     }
 
     public static class Builder {
@@ -53,6 +55,7 @@ public class GetItemsCmd extends AuthorizedCmd {
         private Long since;
         private Integer count;
         private Integer offset;
+        private Integer total;
 
         public Builder() {
         }
@@ -116,9 +119,14 @@ public class GetItemsCmd extends AuthorizedCmd {
             return this;
         }
 
+        public Builder total(Integer total) {
+            this.total = total;
+            return this;
+        }
+
         public GetItemsCmd build() {
             return new GetItemsCmd(state, favorite, tag, contentType, sort, detailType,
-                    search, domain, since, count, offset);
+                    search, domain, since, count, offset, total);
         }
     }
 }
