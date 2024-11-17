@@ -1,5 +1,6 @@
 package pl.codeset.pocket;
 
+import com.google.gson.Gson;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,6 +28,20 @@ class PocketListTest {
     void setUp() {
         HttpProvider.change(httpClient);
         pocket = new Pocket(PocketAuthFactory.createForAccessToken("consumer-key", "access-token"));
+    }
+
+    @Test
+    void shouldSerializeGetItemsCmd() {
+        // given
+        GetItemsCmd getItemsRequest = new GetItemsCmd.Builder()
+            .count(1)
+            .total(10)
+            .build();
+        // when
+        String json = new Gson().toJson(getItemsRequest);
+        // then
+        assertThat(json).contains("\"total\":\"10\"");
+        assertThat(json).contains("\"count\":1");
     }
 
     @Test
