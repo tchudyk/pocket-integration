@@ -24,7 +24,7 @@ public class GetItemsCmd extends AuthorizedCmd {
     private final Long since;
     private final Integer count;
     private final Integer offset;
-    private final Integer total;
+    private final String total;
 
     private GetItemsCmd(ItemState state, Short favorite, String tag,
             ContentType contentType, Sort sort, DetailType detailType, String search, String domain,
@@ -40,7 +40,11 @@ public class GetItemsCmd extends AuthorizedCmd {
         this.since = since;
         this.count = count;
         this.offset = offset;
-        this.total = total;
+        if (total != null) {
+            this.total = total.toString();
+        } else {
+            this.total = null;
+        }
     }
 
     public static class Builder {
