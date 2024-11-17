@@ -128,6 +128,11 @@ public class GetItemsCmd extends AuthorizedCmd {
             return this;
         }
 
+        public Builder total(boolean total) {
+            this.total = total ? 1 : 0;
+            return this;
+        }
+
         public GetItemsCmd build() {
             return new GetItemsCmd(state, favorite, tag, contentType, sort, detailType,
                     search, domain, since, count, offset, total);
