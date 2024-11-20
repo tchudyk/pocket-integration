@@ -34,13 +34,13 @@ class PocketListTest {
     void shouldSerializeGetItemsCmd() {
         // given
         GetItemsCmd getItemsRequest = new GetItemsCmd.Builder()
-            .count(1)
-            .total(10)
+            .count(10)
+            .total(1)
             .build();
         // when
         String json = new Gson().toJson(getItemsRequest);
         // then
-        assertThat(json).contains("\"total\":\"10\"");
+        assertThat(json).contains("\"total\":\"1\"");
         assertThat(json).contains("\"count\":1");
     }
 
