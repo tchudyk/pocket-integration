@@ -41,7 +41,7 @@ class PocketListTest {
         String json = new Gson().toJson(getItemsRequest);
         // then
         assertThat(json).contains("\"total\":\"1\"");
-        assertThat(json).contains("\"count\":1");
+        assertThat(json).contains("\"count\":10");
     }
 
     @Test
