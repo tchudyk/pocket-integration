@@ -27,8 +27,8 @@ public class GetItemsCmd extends AuthorizedCmd {
     private final String total;
 
     private GetItemsCmd(ItemState state, Short favorite, String tag,
-            ContentType contentType, Sort sort, DetailType detailType, String search, String domain,
-            Long since, Integer count, Integer offset, Integer total) {
+        ContentType contentType, Sort sort, DetailType detailType, String search, String domain,
+        Long since, Integer count, Integer offset, Integer total) {
         this.state = state;
         this.favorite = favorite;
         this.tag = tag;
@@ -108,22 +108,31 @@ public class GetItemsCmd extends AuthorizedCmd {
 
         public Builder since(LocalDateTime localDateTime) {
             this.since = Optional.ofNullable(localDateTime)
-                    .map(d -> d.toEpochSecond(ZoneOffset.UTC))
-                    .orElse(null);
+                .map(d -> d.toEpochSecond(ZoneOffset.UTC))
+                .orElse(null);
             return this;
         }
 
         public Builder count(Integer count) {
+            if (count < 1 || count > 30) {
+                throw new IllegalArgumentException("Count must be between 1 and 30");
+            }
             this.count = count;
             return this;
         }
 
         public Builder offset(Integer offset) {
+            if (offset < 0) {
+                throw new IllegalArgumentException("Offset must be greater or equal to 0");
+            }
             this.offset = offset;
             return this;
         }
 
         public Builder total(Integer total) {
+            if (total != 0 && total != 1) {
+                throw new IllegalArgumentException("Total must be 0 or 1");
+            }
             this.total = total;
             return this;
         }
@@ -135,7 +144,7 @@ public class GetItemsCmd extends AuthorizedCmd {
 
         public GetItemsCmd build() {
             return new GetItemsCmd(state, favorite, tag, contentType, sort, detailType,
-                    search, domain, since, count, offset, total);
+                search, domain, since, count, offset, total);
         }
     }
 }
